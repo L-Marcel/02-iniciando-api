@@ -1,6 +1,8 @@
 {
-  "translatedDescription": "[Estagnado]",
+  "translatedDescription": "Um aplicação de registro de carros utilizada para treinar os princípios utilizados na criação de uma API.",
   "technologies": [
-    "Node.js"
+    "Node.js",
+    "Swagger",
+    "Multer"
   ]
 }
