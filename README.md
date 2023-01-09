@@ -21,6 +21,9 @@
       <li id="checked"><p>Listar categorias de carros;</p></li>
       <li id="checked"><p>Listar especificações de carros;</p></li>
       <li id="checked"><p>Importar categorias de carros.</p></li>
+      <li id="checked"><p>Registrar um novo usuário;</p></li>
+      <li id="checked"><p>Autenticar um usuário;</p></li>
+      <li id="checked"><p>Atualizar avatar do usuário.</p></li>
     </ul>
   </div>
 </div>

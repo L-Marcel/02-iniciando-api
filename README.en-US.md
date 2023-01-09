@@ -21,6 +21,9 @@
       <li id="checked"><p>List the cars' categories;</p></li>
       <li id="checked"><p>List the cars'specifications;</p></li>
       <li id="checked"><p>Import cars' categories.</p></li>
+      <li id="checked"><p>Register a new user;</p></li>
+      <li id="checked"><p>Authenticate a user;</p></li>
+      <li id="checked"><p>Update user's avatar.</p></li>
     </ul>
   </div>
 </div>
