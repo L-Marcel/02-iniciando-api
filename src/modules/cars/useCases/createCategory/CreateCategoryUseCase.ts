@@ -1,20 +1,24 @@
-import { CategoriesRepositoryType } from "../../repositories/implementations/CategoriesRepository";
-import { CategoryConstructor } from "../../model/Category";
-import { ApiError } from "../../../../errors/ApiError";
+import { CategoriesRepositoryType } from "../../repositories/CategoriesRepository";
+import { CategoryConstructor } from "../../entities/Category";
+import { injectable, inject } from "tsyringe";
 
+@injectable()
 export class CreateCategoryUseCase {
-  constructor(private categoriesRepository: CategoriesRepositoryType) {}
+  constructor(
+    @inject("CategoriesRepository")
+    private categoriesRepository: CategoriesRepositoryType
+  ) {}
 
-  execute(
+  async execute(
     { name, description }: CategoryConstructor
   ) {
-    const categoryAlreadyExists = this.categoriesRepository.findByName(name);
+    const categoryAlreadyExists = await this.categoriesRepository.findByName(name);
 
     if(categoryAlreadyExists) {
-      throw new ApiError(400, "Category already exists!");
+      throw new Error("Category already exists!");
     }
   
-    this.categoriesRepository.create({
+    await this.categoriesRepository.create({
       name,
       description
     });

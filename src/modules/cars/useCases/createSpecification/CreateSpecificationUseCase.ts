@@ -1,20 +1,23 @@
-import { SpecificationConstructor } from "../../model/Specification";
-import { ApiError } from "../../../../errors/ApiError";
-import { SpecificationsRepositoryType } from "../../repositories/implementations/SpecificationsRepository";
-
+import { SpecificationConstructor } from "../../entities/Specification";
+import { SpecificationsRepositoryType } from "../../repositories/SpecificationsRepository";
+import { injectable, inject } from "tsyringe";
+@injectable()
 export class CreateSpecificationUseCase {
-  constructor(private specificationsRepository: SpecificationsRepositoryType) {}
+  constructor(
+    @inject("SpecificationsRepository")
+    private specificationsRepository: SpecificationsRepositoryType
+  ) {}
 
-  execute(
+  async execute(
     { name, description }: SpecificationConstructor
   ) {
-    const specificationAlreadyExists = this.specificationsRepository.findByName(name);
+    const specificationAlreadyExists = await this.specificationsRepository.findByName(name);
 
     if(specificationAlreadyExists) {
-      throw new ApiError(400, "Specification already exists!");
+      throw new Error("Specification already exists!");
     }
   
-    this.specificationsRepository.create({
+    await this.specificationsRepository.create({
       name,
       description
     });

@@ -1,9 +1,9 @@
 <div valing="top">
-  <h1>Ignite: 02 / Node.js / RentalX Documentation</h1>
+  <h1>Ignite: 02 / Node.js / Rentx</h1>
   <p>One of Ignite's Node.js trail project</p>
   <nav>
     <div id="repository-buttons"/>
-    <a class="navigation-link disabled" href="https://github.com/L-Marcel/ignite-02-nodejs-rentalx-documentation/blob/master/README.md" target="__blank__">
+    <a class="navigation-link disabled" href="https://github.com/L-Marcel/ignite-02-nodejs-rentx/blob/master/README.md" target="__blank__">
       pt-br
     </a>
   </nav>

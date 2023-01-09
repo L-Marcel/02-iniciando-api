@@ -1,11 +1,15 @@
 import fs from "fs";
-import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
-import { ApiError } from "../../../../errors/ApiError";
+import { CategoriesRepository } from "../../repositories/CategoriesRepository";
 import csvParse from "csv-parse";
-import { CategoryConstructor } from "../../model/Category";
+import { CategoryConstructor } from "../../entities/Category";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 export class ImportCategoryUseCase {
-  constructor(private categoriesRepository: CategoriesRepository) {}
+  constructor(
+    @inject("CategoriesRepository")
+    private categoriesRepository: CategoriesRepository
+  ) {}
 
   loadCategories(file: Express.Multer.File) {
     return new Promise<CategoryConstructor[]>((resolve, reject) => {
@@ -33,16 +37,16 @@ export class ImportCategoryUseCase {
 
   async execute(file?: Express.Multer.File) {
     if(!file) {
-      throw new ApiError(400, "File is missing.");
+      throw new Error("File is missing.");
     }
 
     const categories = await this.loadCategories(file);
 
-    categories.forEach(({ name, description }) => {
-      const existCategory = this.categoriesRepository.findByName(name);
+    categories.forEach(async({ name, description }) => {
+      const existCategory = await this.categoriesRepository.findByName(name);
     
       if(!existCategory) {
-        this.categoriesRepository.create({
+        await this.categoriesRepository.create({
           name, 
           description 
         });
