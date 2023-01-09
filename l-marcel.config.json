@@ -3,6 +3,8 @@
   "technologies": [
     "Node.js",
     "Swagger",
-    "Multer"
+    "Multer",
+    "Express",
+    "Eslint"
   ]
 }
