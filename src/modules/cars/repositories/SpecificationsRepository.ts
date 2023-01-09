@@ -3,7 +3,7 @@ import { Repository, getRepository } from "typeorm";
 
 export type SpecificationsRepositoryType = {
   findByName(name: string): Promise<Specification | undefined>;
-  list(query?: string): Promise<Specification[]>;
+  list(): Promise<Specification[]>;
   create(data: SpecificationConstructor): Promise<void>;
   findByID(id: string): Promise<Specification | undefined>;
 }

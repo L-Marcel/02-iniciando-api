@@ -3,7 +3,7 @@ import { Repository, getRepository } from "typeorm";
 
 export type CategoriesRepositoryType = {
   findByName(name: string): Promise<Category | undefined>;
-  list(query?: string): Promise<Category[]>;
+  list(): Promise<Category[]>;
   create(data: CategoryConstructor): Promise<void>;
   findByID(id: string): Promise<Category | undefined>;
 }

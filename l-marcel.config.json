@@ -5,6 +5,7 @@
     "Swagger",
     "Multer",
     "Express",
-    "Eslint"
+    "Eslint",
+    "Jest"
   ]
 }
