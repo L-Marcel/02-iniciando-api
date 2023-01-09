@@ -6,6 +6,8 @@ export type UserConstructor = {
   email: string;
   password: string;
   driver_license: string;
+  id?: string;
+  avatar?: string;
 }
 
 @Entity("users")
@@ -27,6 +29,9 @@ export class User {
   
   @Column()
     is_admin: boolean;
+
+  @Column()
+    avatar: string;
 
   @CreateDateColumn()
     created_at: Date;

@@ -19,13 +19,17 @@ export class UsersRepository implements UsersRepositoryType {
     driver_license,
     name,
     password,
-    email
+    email,
+    avatar,
+    id
   }: UserConstructor) {
     const user = this.repository.create({
       driver_license,
       name,
       password,
-      email
+      email,
+      avatar,
+      id
     });
 
     await this.repository.save(user);

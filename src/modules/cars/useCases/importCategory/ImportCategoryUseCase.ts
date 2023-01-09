@@ -3,6 +3,7 @@ import { CategoriesRepository } from "../../repositories/CategoriesRepository";
 import csvParse from "csv-parse";
 import { CategoryConstructor } from "../../entities/Category";
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../errors/AppError";
 
 @injectable()
 export class ImportCategoryUseCase {
@@ -37,7 +38,7 @@ export class ImportCategoryUseCase {
 
   async execute(file?: Express.Multer.File) {
     if(!file) {
-      throw new Error("File is missing.");
+      throw new AppError("File is missing.");
     }
 
     const categories = await this.loadCategories(file);
