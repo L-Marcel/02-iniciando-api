@@ -1,7 +1,7 @@
-import { CategoriesRepositoryType } from "../../repositories/CategoriesRepository";
-import { CategoryConstructor } from "../../entities/Category";
+import { CategoriesRepositoryType } from "../../infra/typeorm/repositories/CategoriesRepository";
+import { CategoryConstructor } from "../../infra/typeorm/entities/Category";
 import { injectable, inject } from "tsyringe";
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "@errors/AppError";
 
 @injectable()
 export class CreateCategoryUseCase {

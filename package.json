@@ -5,7 +5,7 @@
   "license": "MIT",
   "types": "src/@types",
   "scripts": {
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/index.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/index.ts",
     "lint": "eslint src/*.ts --fix",
     "typeorm": "ts-node ./node_modules/typeorm/cli migration:run",
     "typeorm:create": "ts-node ./node_modules/typeorm/cli migration:create",
@@ -45,6 +45,7 @@
     "ts-jest": "^29.0.3",
     "ts-node": "^10.4.0",
     "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^4.1.2",
     "typescript": "^4.6.4"
   }
 }

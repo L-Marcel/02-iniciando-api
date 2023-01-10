@@ -1,7 +1,7 @@
-import "reflect-metadata";
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 import { CategoriesRepositoryInMemory } from "../../repositories/in-memory/CategoriesRepositoryInMemory";
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "@errors/AppError";
+import { CategoryConstructor } from "../../infra/typeorm/entities/Category";
 
 let createCategoryUseCase: CreateCategoryUseCase;
 let categoriesRepositoryInMemory: CategoriesRepositoryInMemory;
@@ -15,10 +15,12 @@ describe("Create category", () => {
   it("Should be able to create a new category", async() => {
     const createCategoryMethod = jest.spyOn(createCategoryUseCase, "execute");
 
-    await createCategoryUseCase.execute({
+    const category: CategoryConstructor = {
       name: "Category test",
       description: "Category description test"
-    });
+    };
+
+    await createCategoryUseCase.execute(category);
 
     expect(createCategoryMethod).toBeCalled();
     
@@ -31,17 +33,18 @@ describe("Create category", () => {
   it("Should not be able to create a duplicated category", async() => {
     const createCategoryMethod = jest.spyOn(createCategoryUseCase, "execute");
 
-    const category = {
+    const category: CategoryConstructor = {
       name: "Category test",
       description: "Category description test"
     };
 
+    await createCategoryUseCase.execute(category);
+
     expect(async() => {
-      await createCategoryUseCase.execute(category);
       await createCategoryUseCase.execute(category);
     }).rejects.toBeInstanceOf(AppError);
 
-    expect(createCategoryMethod).toBeCalledTimes(1);
+    expect(createCategoryMethod).toBeCalledTimes(2);
     expect(createCategoryMethod).toThrowError();
   });
 });

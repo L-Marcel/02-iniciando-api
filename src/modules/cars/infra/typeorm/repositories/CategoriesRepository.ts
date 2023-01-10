@@ -8,7 +8,6 @@ export type CategoriesRepositoryType = {
   findByID(id: string): Promise<Category | undefined>;
 }
 
-
 export class CategoriesRepository implements CategoriesRepositoryType {
   private repository: Repository<Category>;
 

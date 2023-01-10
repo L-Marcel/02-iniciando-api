@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe";
-import { UsersRepositoryType } from "../../repositories/UsersRespository";
-import { UserConstructor } from "../../entities/User";
+import { UsersRepositoryType } from "../../infra/typeorm/repositories/UsersRespository";
+import { UserConstructor } from "../../infra/typeorm/entities/User";
 import { genSalt, hash } from "bcrypt";
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "@errors/AppError";
 
 @injectable()
 export class CreateUserUseCase {
@@ -16,7 +16,7 @@ export class CreateUserUseCase {
     name,
     password,
     email
-  }: UserConstructor) {
+  }: UserConstructor, isAdmin = false) {
     const userAlreadyExists = await this.usersRepository.findByEmail(email); 
 
     if(userAlreadyExists) {
@@ -26,11 +26,20 @@ export class CreateUserUseCase {
     const salt = await genSalt(8);
     const passwordHash = await hash(password, salt);
 
-    await this.usersRepository.create({
-      driver_license,
-      name,
-      password: passwordHash,
-      email
-    });
+    if(isAdmin) {
+      await this.usersRepository.createAdmin({
+        driver_license,
+        name,
+        password: passwordHash,
+        email,
+      });
+    } else {
+      await this.usersRepository.create({
+        driver_license,
+        name,
+        password: passwordHash,
+        email,
+      });
+    }
   }
 }

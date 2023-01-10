@@ -1,6 +1,6 @@
-import { AppError } from "../../../../errors/AppError";
-import { SpecificationConstructor } from "../../entities/Specification";
-import { SpecificationsRepositoryType } from "../../repositories/SpecificationsRepository";
+import { AppError } from "@errors/AppError";
+import { SpecificationConstructor } from "../../infra/typeorm/entities/Specification";
+import { SpecificationsRepositoryType } from "../..//infra/typeorm/repositories/SpecificationsRepository";
 import { injectable, inject } from "tsyringe";
 @injectable()
 export class CreateSpecificationUseCase {

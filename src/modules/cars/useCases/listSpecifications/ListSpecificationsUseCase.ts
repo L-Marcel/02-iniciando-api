@@ -1,4 +1,4 @@
-import { SpecificationsRepository } from "../../repositories/SpecificationsRepository";
+import { SpecificationsRepository } from "../../infra/typeorm/repositories/SpecificationsRepository";
 import { inject, injectable } from "tsyringe";
 
 @injectable()

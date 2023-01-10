@@ -1,5 +1,5 @@
 import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
-import { getUUID } from "../../../utils/getUUID";
+import { v4 as uuid } from "uuid";
 
 export type CategoryConstructor = {
   description: string;
@@ -22,7 +22,7 @@ export class Category {
 
   constructor() {
     if(!this.id) {
-      this.id = getUUID();
+      this.id = uuid();
     }
   }
 }

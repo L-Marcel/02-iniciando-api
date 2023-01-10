@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryColumn, CreateDateColumn } from "typeorm";
-import { getUUID } from "../../../utils/getUUID";
+import { v4 as uuid } from "uuid";
 
 export type UserConstructor = {
   name: string;
@@ -38,7 +38,7 @@ export class User {
 
   constructor() {
     if(!this.id) {
-      this.id = getUUID();
+      this.id = uuid();
     }
   }
 }

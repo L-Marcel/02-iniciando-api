@@ -1,9 +1,9 @@
 import fs from "fs";
-import { CategoriesRepository } from "../../repositories/CategoriesRepository";
+import { CategoriesRepository } from "../../infra/typeorm/repositories/CategoriesRepository";
 import csvParse from "csv-parse";
-import { CategoryConstructor } from "../../entities/Category";
+import { CategoryConstructor } from "../../infra/typeorm/entities/Category";
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "@errors/AppError";
 
 @injectable()
 export class ImportCategoryUseCase {

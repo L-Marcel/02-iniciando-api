@@ -1,12 +1,14 @@
-/*
- * For a detailed explanation regarding each configuration property and type check, visit:
- * https://jestjs.io/docs/configuration
- */
+import { compilerOptions } from "./tsconfig.json";
+import { pathsToModuleNameMapper } from "ts-jest";
 
 export default {
+  setupFilesAfterEnv: ["<rootDir>/setup-jest.ts"],
   // All imported modules in your tests should be mocked automatically
   // automock: false,
-
+  roots: ["<rootDir>"],
+  modulePaths: [compilerOptions.baseUrl], // <-- This will be set to 'baseUrl' value
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: "<rootDir>/src" }),
+  
   // Stop running tests after `n` failures
   bail: true,
 

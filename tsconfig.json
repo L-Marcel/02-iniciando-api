@@ -13,7 +13,16 @@
     "strict": true,
     "skipLibCheck": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "@modules/*": ["./modules/*"],
+      "@config/*": ["./config/*"],
+      "@shared/*": ["./shared/*"],
+      "@utils/*": ["./utils/*"],
+      "@errors/*": ["./errors/*"]
+    }
   },
   "include": [
     "src/**/*"

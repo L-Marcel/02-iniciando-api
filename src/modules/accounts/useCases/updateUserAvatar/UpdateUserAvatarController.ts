@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { UpdateUserAvatarUseCase } from "./UpdateUserAvatarUseCase";
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "@errors/AppError";
 export class UpdateUserAvatarController {
   async handle(req: Request, res: Response) {
     const { id } = req.user;

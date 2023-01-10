@@ -4,8 +4,9 @@ import { Repository, getRepository } from "typeorm";
 export type SpecificationsRepositoryType = {
   findByName(name: string): Promise<Specification | undefined>;
   list(): Promise<Specification[]>;
-  create(data: SpecificationConstructor): Promise<void>;
+  create(data: SpecificationConstructor): Promise<Specification>;
   findByID(id: string): Promise<Specification | undefined>;
+  findByIDs(id: string[]): Promise<Specification[]>;
 }
 
 export class SpecificationsRepository implements SpecificationsRepositoryType {
@@ -25,6 +26,8 @@ export class SpecificationsRepository implements SpecificationsRepositoryType {
     });
 
     await this.repository.save(specification);
+
+    return specification;
   }
 
   async list() {
@@ -37,6 +40,10 @@ export class SpecificationsRepository implements SpecificationsRepositoryType {
         id
       }
     });
+  }
+
+  async findByIDs(ids: string[] = []) {
+    return await this.repository.findByIds(ids);
   }
 
   async findByName(name?: string) {

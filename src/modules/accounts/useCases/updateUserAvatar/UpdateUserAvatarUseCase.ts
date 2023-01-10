@@ -1,7 +1,7 @@
 import { injectable, inject } from "tsyringe";
-import { UsersRepositoryType } from "../../repositories/UsersRespository";
-import { AppError } from "../../../../errors/AppError";
-import { deleteFile } from "../../../../utils/file";
+import { UsersRepositoryType } from "../../infra/typeorm/repositories/UsersRespository";
+import { AppError } from "@errors/AppError";
+import { deleteFile } from "@utils/file";
 
 interface UpdateUserAvatarRequest {
   user_id: string;

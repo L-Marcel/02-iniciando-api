@@ -1,12 +1,13 @@
 import "reflect-metadata";
 import "./database";
-import "./shared/container";
+import "@shared/container";
 import express, { json } from "express";
 import "express-async-errors";
 import cors from "cors";
-import { router } from "./routes/index.routes";
+import { router } from "./shared/infra/http/routes/index.routes";
 import { Response, Request, NextFunction } from "express";
-import { AppError } from "./errors/AppError";
+import { AppError } from "@errors/AppError";
+import { createAdminIfNotExist } from "database/seed/admin";
 
 const app = express();
 
@@ -30,5 +31,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
+createAdminIfNotExist();
 app.listen(3333);
 

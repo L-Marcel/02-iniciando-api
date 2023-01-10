@@ -1,8 +1,8 @@
 import { injectable, inject } from "tsyringe";
-import { UsersRepositoryType } from "../../repositories/UsersRespository";
+import { UsersRepositoryType } from "../../infra/typeorm/repositories/UsersRespository";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "@errors/AppError";
 
 interface AuthenticateResponse {
   user: {

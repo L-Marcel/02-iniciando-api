@@ -1,5 +1,5 @@
-import { Category, CategoryConstructor } from "../../entities/Category";
-import { CategoriesRepositoryType } from "../CategoriesRepository";
+import { Category, CategoryConstructor } from "../../infra/typeorm/entities/Category";
+import { CategoriesRepositoryType } from "../../infra/typeorm/repositories/CategoriesRepository";
 
 export class CategoriesRepositoryInMemory implements CategoriesRepositoryType {
   categories: Category[] = [];
