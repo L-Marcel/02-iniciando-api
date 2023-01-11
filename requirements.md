@@ -49,4 +49,5 @@
 ### **RN**: Regras de negócio
 - O aluguel deve ter duração mínima de 24 hora;
 - Não deve ser possível cadastrar um novo aluguel caso já exista um para o mesmo carro;
-- Não deve ser possível cadastrar um novo aluguel caso já exista um para o mesmo usuário.
+- Não deve ser possível cadastrar um novo aluguel caso já exista um para o mesmo usuário;
+- O usuário deve estar logado na applicação.

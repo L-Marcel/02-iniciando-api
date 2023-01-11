@@ -13,7 +13,7 @@ const createCategoryController = new CreateCategoryController();
 const listCategoriesController = new ListCategoriesController();
 const importCategoryController = new ImportCategoryController();
 
-const uploadCategories = multer(upload("./tmp"));
+const uploadCategories = multer(upload("./temp"));
 
 categoriesRoutes.post(
   "/", 

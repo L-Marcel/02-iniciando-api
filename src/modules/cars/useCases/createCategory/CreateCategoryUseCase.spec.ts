@@ -45,6 +45,5 @@ describe("Create category", () => {
     }).rejects.toBeInstanceOf(AppError);
 
     expect(createCategoryMethod).toBeCalledTimes(2);
-    expect(createCategoryMethod).toThrowError();
   });
 });

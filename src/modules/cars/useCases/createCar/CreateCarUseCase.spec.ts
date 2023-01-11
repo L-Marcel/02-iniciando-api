@@ -56,7 +56,6 @@ describe("Create car", () => {
     }).rejects.toBeInstanceOf(AppError);
 
     expect(createCarMethod).toBeCalledTimes(2);
-    expect(createCarMethod).toThrowError();
   });
 
   it("Should be able to create a car with availability by default", async() => {

@@ -40,5 +40,4 @@ carsRoutes.post(
   uploadCarImagesController.handle
 );
 
-
 export { carsRoutes };
